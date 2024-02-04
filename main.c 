@@ -1,0 +1,15 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <stdbool.h>
+#include <stdint.h>
+
+#define EXIT_SUCCESS 0
+#define EXIT_FAILURE_DUE_OF_FEW_ARGS 1
+int main(int agrc , char** argv){
+    if (argc < 2){
+        exit(EXIT_FAILURE_DUE_OF_FEW_ARGS);
+    }
+    exit(EXIT_SUCCESS);
+}
+
