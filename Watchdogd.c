@@ -8,20 +8,42 @@
 
 #include <sys/inotify.h>
 
+#include <libnotify/notify.h>
+#include <libnotify/notification.h>
+
 #define EXT_SUCCESS 0
 #define EXT_ERR_TOO_FEW_ARGS 1 
 #define EXT_ERR_INIT_INOTIFY 2
 #define EXT_ERR_ADD_WATCH 3  
 #define EXT_ERR_BASE_PATH_NULL 4
-#define EXT_ERR_READ_INOTIFY 5  
+#define EXT_ERR_READ_INOTIFY 5 
+#define EXT_ERR_INIT_LIBNOTIFY 6  
 
 int IeventQueue = -1;
 int IeventStatus = -1;
 
+char *ProgramTitle = "Watchdog";
+
+void signal_handler(int signal){
+    int closeStatus =-1;
+    printf ("Signal received , cleaning up ..... \n");
+    closeStatus = inotify_rm_watch(IeventQueue , IeventStatus);
+    if ( closeStatus == -1 ){
+        fprintf(stderr , "Error removing from watch queue!\n");
+    }
+    close(IeventQueue);
+    exit(EXIT_SUCCESS);
+}
+
 int main(int argc , char** argv){
     
+    bool libnotifyInitStatus = false ;
+
     char *basePath = NULL;
     char *token = NULL;
+    char *notificationMessage = NULL ;
+    
+    NotifyNotification *notifyHandle;
 
     char buffer[4096];
     int readLength ;
@@ -53,6 +75,11 @@ int main(int argc , char** argv){
         exit(EXT_ERR_BASE_PATH_NULL);
     }
     
+    libnotifyInitStatus = notify_init(ProgramTitle);
+    if (! libnotifyInitStatus){
+        fprintf(stderr , "Error initializing libnotify: \n");
+        exit(EXT_ERR_INIT_LIBNOTIFY);
+    }
     // printf("%s\n", basePath);
     IeventQueue = inotify_init();
     
@@ -68,6 +95,9 @@ int main(int argc , char** argv){
         exit(EXT_ERR_ADD_WATCH);
     }
 
+    signal(SIGABRT , signal_handler);
+    signal(SIGINT  , signal_handler);
+    signal(SIGTERM , signal_handler);
 
     while(true){
         printf("Waiting for ievent ...\n");
@@ -80,7 +110,47 @@ int main(int argc , char** argv){
         readLength = read(IeventQueue , buffer , sizeof(buffer));
         for (char  *bufferPointer = buffer ; bufferPointer < buffer + readLength ; bufferPointer += sizeof(struct inotify_event) + watchEvent-> len)
         {
+            notificationMessage = NULL ;
             watchEvent = (const struct inotify_event *) bufferPointer ;
+
+            if (watchEvent-> mask & IN_CREATE){
+                notificationMessage = "File created.\n";
+            }
+
+            if (watchEvent->mask & IN_DELETE)
+            {
+                notificationMessage = "File Deleted.\n";
+            }
+
+            if (watchEvent->mask & IN_ACCESS){
+                notificationMessage = "File accessed .\n";
+            }
+
+            if (watchEvent->mask & IN_CLOSE_WRITE){
+                notificationMessage = "File written and closed . \n";
+            }
+
+            if (watchEvent->mask & IN_MODIFY){
+                notificationMessage = "File modified. \n";
+            }
+
+            if (watchEvent->mask & IN_MOVE_SELF){
+                notificationMessage = "File moved.\n";
+            }
+
+            if (notificationMessage == NULL){
+                continue;
+            }
+
+            notifyHandle = notify_notification_new(basePath , notificationMessage , "dialog-information");
+            if (notifyHandle == NULL){
+                fprintf(stderr , "Notification handle was null \n");
+                continue ;
+            }
+
+            notify_notification_show(notifyHandle ,NULL);
+            // printf("%s\n", notificationMessage);
+
         }
     }
 
