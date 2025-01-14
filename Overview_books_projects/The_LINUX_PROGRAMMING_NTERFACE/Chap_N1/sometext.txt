@@ -1,0 +1,10 @@
+Hello From this example , we are using mmap_func_example2.c 
+
+
+Kindly referre to code source to understand what is ongoing here 
+
+
+Feel free to contribuate or to improve the code source by forking the repo and raising a new merge request , or an issue 
+
+
+Thanks and regards 
