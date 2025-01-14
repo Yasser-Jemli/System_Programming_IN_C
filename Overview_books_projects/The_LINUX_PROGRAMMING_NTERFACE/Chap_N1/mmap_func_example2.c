@@ -23,7 +23,24 @@ int main(int argc , char** argv){
         perror("Coudln't get file size. \n");
     }
 
-    printf("file size is %ld\n", sb.st_size);
+    printf("file size is %ld\nand file owner is (UID) %d\n", sb.st_size , sb.st_uid);
+
+    if ((sb.st_mode & S_IFMT) == S_IFREG) {
+        printf("This is a regular file.\n");
+    }
+    else if ((sb.st_mode & S_IFMT) == S_IFDIR) {
+        printf("This is a directory.\n");
+    }
+
+    if (sb.st_mode & S_IRUSR) {
+        printf("Owner has read permission.\n");
+    }
+    if (sb.st_mode & S_IWUSR) {
+        printf("Owner has write permission.\n");
+    }
+    if (sb.st_mode & S_IXUSR) {
+        printf("Owner has execute permission.\n");
+    }
 
 
     char *file_in_memory = mmap(NULL , sb.st_size, PROT_READ , MAP_PRIVATE , fd , 0 );
@@ -41,6 +58,8 @@ int main(int argc , char** argv){
     }
 
     printf("\n");
+
+    close(fd);
 
 
     return 0 ; 
