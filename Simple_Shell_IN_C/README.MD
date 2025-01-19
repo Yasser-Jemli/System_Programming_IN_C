@@ -1,0 +1,1 @@
+A series of learning sessions on Writing a Simple Shell in C
