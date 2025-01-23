@@ -1,6 +1,7 @@
 {
     "makefile.configureOnOpen": false,
     "files.associations": {
-        "notification.h": "c"
+        "notification.h": "c",
+        "stdio.h": "c"
     }
 }
