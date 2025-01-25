@@ -2,4 +2,5 @@ Chaptires :
     1 - Introduction to variables
     2 - Introduction to the preprocessor
         * We need to look at good additonal resources to examine how preprocessor works 
-    3 - Introduction to arrays in C 
+    3 - Introduction to arrays in C
+    4 - Introduction to Strings in C
