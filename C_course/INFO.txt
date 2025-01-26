@@ -1,7 +1,7 @@
 Chaptires : 
     1 - Introduction to variables
     2 - Introduction to the preprocessor
-        * We need to look at good additonal resources to examine how preprocessor works 
+        1 - We need to look at good additonal resources to examine how preprocessor works 
     3 - Introduction to arrays in C
     4 - Introduction to Strings in C
     5 - Introduction to Conditional Statements
@@ -9,3 +9,5 @@ Chaptires :
     7 - Introduction to functions in C
     8 - Introduction to structures in C
     9 - Introduction to Union in C
+    
+    10 - Introduction to Pointer in C

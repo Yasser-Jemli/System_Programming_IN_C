@@ -34,12 +34,15 @@ int main (){
     int i = 0 ; 
     for (i ; i < MAX_EMPLOYESS ; i++){
         my_employees[i].id = i ;
+
         /*In C, string literals like "name" are pointers to the first character of the string. 
         When you add an integer (i) to the string pointer ("name" + i), it advances the pointer by i positions. 
         This results in a pointer to the substring starting from the i-th character of "name" (for example, "name" + 1 gives "ame"), 
         which is not what you want.*/
+        
         // @DEPRECATED Code
         // strcpy(my_employees[i].firstname , "name" + i );
+        
         sprintf(my_employees[i].firstname, "name%d", i);
         my_employees[i].ismanager = false ;
 
