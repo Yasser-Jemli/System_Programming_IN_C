@@ -1,7 +1,9 @@
-Chaptires : 
+Chaptires :
+
     1 - Introduction to variables
     2 - Introduction to the preprocessor
-        1 - We need to look at good additonal resources to examine how preprocessor works 
+        * We need to look at good additonal resources to examine how preprocessor works 
+
     3 - Introduction to arrays in C
     4 - Introduction to Strings in C
     5 - Introduction to Conditional Statements
@@ -12,4 +14,21 @@ Chaptires :
     
     10 - Introduction to Pointer in C
     11 - Introduction to Dynamic Memory Allocation 
-    12 - Introduction to Static Memory Allocation 
+    12 - Introduction to Static Memory Allocation
+    13 - Introduction to pointor to pointor in C
+    14 - Use valgrind to detect memory leaks issue in your code 
+        * No lessons is giving for this chaptire for now
+
+    15 - what's _glibc ? 
+        * No lessons is giving for this chapitre for now 
+        * kindly examine one ELF programe with file and check it also with ldd
+            -  check what linux-vdso.so.1 referre to ? 
+            -  check what libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 referre to ? 
+            -  /lib64/ld-linux-x86-64.so.2  referre to ? 
+    
+    16 - how to read a man page ?
+        * No lessons is giving for this captire for now 
+        * some tipes will be added in the folder of this lessons on how to read and keep an eye on some detailles in man page 
+
+    17 - checking for errors with errno 
+    18 - Introduction to File Descriptor in C
