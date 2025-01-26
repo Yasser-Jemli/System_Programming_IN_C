@@ -1,0 +1,6 @@
+here we use to compile gcc -o eth_monitor eth_monitor.c $(pkg-config --cflags --libs libnotify glib-2.0)
+ 
+
+for some reassons libnotifiy relys on glib.h in which in my machine it not founded 
+
+to avoid such an  issue we move it to be compiled like this 

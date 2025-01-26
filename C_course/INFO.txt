@@ -6,3 +6,6 @@ Chaptires :
     4 - Introduction to Strings in C
     5 - Introduction to Conditional Statements
     6 - Introduction to loops in C
+    7 - Introduction to functions in C
+    8 - Introduction to structures in C
+    9 - Introduction to Union in C
