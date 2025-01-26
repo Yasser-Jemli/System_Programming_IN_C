@@ -11,3 +11,5 @@ Chaptires :
     9 - Introduction to Union in C
     
     10 - Introduction to Pointer in C
+    11 - Introduction to Dynamic Memory Allocation 
+    12 - Introduction to Static Memory Allocation 
