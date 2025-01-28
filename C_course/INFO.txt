@@ -32,3 +32,6 @@ Chaptires :
 
     17 - checking for errors with errno 
     18 - Introduction to File Descriptor in C
+    19 - File output Introduction in C
+    20 - File Input Introduction in C
+    21 - File Metadata Introduction in C
