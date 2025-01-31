@@ -1,5 +1,4 @@
 Chaptires :
-
     1 - Introduction to variables
 
     2 - Introduction to the preprocessor
@@ -63,3 +62,5 @@ Chaptires :
             2 - examine libtheehee.so with file command to make sure it's now a shared object 
             3 - gcc -o main main.c -Ilibtee -ltheehee -L$(pwd)
             4 - you can link it by added it to variable LD_LIBRARY_PATH 
+
+    27 - Project a Design 
