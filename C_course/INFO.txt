@@ -50,3 +50,16 @@ Chaptires :
             - bin   // have all the binaires ( executable )
 
     25 - Build systems
+    26 - Creating a Library 
+        * Shared Library vs Static library 
+        --> compile process in our first example ( Static library )
+            1 - gcc -o lib.o -c lib.C
+            2 - ar rcs libteehee.a lib.o
+            3 - mv libtee/libteehee.a . 
+            4 - gcc -o main main.c libteehee.a -Ilibtee 
+
+        --> compile process in our first example ( Shared Library )
+            1 - gcc -o libtheehee.so lib.c -Shared
+            2 - examine libtheehee.so with file command to make sure it's now a shared object 
+            3 - gcc -o main main.c -Ilibtee -ltheehee -L$(pwd)
+            4 - you can link it by added it to variable LD_LIBRARY_PATH 
