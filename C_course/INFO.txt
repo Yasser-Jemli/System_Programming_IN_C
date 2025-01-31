@@ -1,6 +1,7 @@
 Chaptires :
 
     1 - Introduction to variables
+
     2 - Introduction to the preprocessor
         * We need to look at good additonal resources to examine how preprocessor works 
 
@@ -16,6 +17,7 @@ Chaptires :
     11 - Introduction to Dynamic Memory Allocation 
     12 - Introduction to Static Memory Allocation
     13 - Introduction to pointor to pointor in C
+
     14 - Use valgrind to detect memory leaks issue in your code 
         * No lessons is giving for this chaptire for now
 
@@ -35,3 +37,16 @@ Chaptires :
     19 - File output Introduction in C
     20 - File Input Introduction in C
     21 - File Metadata Introduction in C
+
+    22 - Variables types Introduction in C
+        * Special Variables Types outside the standard types 
+
+    23 - Type Casting
+    24 - Multi module Programming in C
+        * Don't do a spaghetti code --> code is not organized code when it will be too hard to follow
+        * Simple Code structure
+            - include // have all the *.h files 
+            - src   // have all the *.c files 
+            - bin   // have all the binaires ( executable )
+
+    25 - Build systems
