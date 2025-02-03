@@ -1,0 +1,9 @@
+CC = gcc
+CFLAGS = -Wall -g
+SRC = $(wildcard src/*.c)
+OBJ = $(patsubst src/%.c, obj/%.o, $(SRC))
+CC_VERSION = $(shell gcc --version)
+TARGET = bin/main_program
+INCLUDES = -Iinclude
+DATABASE_FILE_NAME = my_database_file.db
+DATABASE_DEFAULT_FILE_NAME = local_database_file.db
