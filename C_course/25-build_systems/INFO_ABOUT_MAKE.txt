@@ -1,0 +1,110 @@
+what's Make ? 
+
+- Make is a scripting tool is used for building executable
+    accoding to commands 
+
+    Make tool parse an input file "Makefile" to definie rules that it will run 
+
+    two types of Make ( GNU Make - Borland Make )
+
+- why we need make ? 
+
+    to organize the compilition process
+    to run our tools and scripts 
+    to automate the process 
+    to be fully control on the outputs and its time 
+
+- is it must to be Makefile ? 
+    no you can use -f FILE , --file=FILE, --makefile=FILE
+    make -f [file_name]
+
+- basic syntaxe 
+
+    1) setting rules
+        # Target : prerequisites 
+        #<tab> Recipe
+
+    2) Definie Variables 
+        file = test.c 
+
+        how to call the variable ? --> gcc $(file) -o cprogram
+        how to add to the variable ? --> file +=hello.cpp
+
+        --> variables can only be strings 
+            --> best practice to use  := instead of = (but both working) 
+
+    3) substitute variable 
+        echo $(file)
+
+    4) how to run a command : 
+        display : 
+            @echo "hello world"
+
+    5) Access Environment varibales: 
+        --> it is accessble ex : echo $(PATH)
+
+    6) Access Shell commands : 
+        rm , date 
+
+    7) access external scripts :
+        example : 
+            - python3 Testscript.py
+            test : 
+                python analytics.py
+
+    8) functions in Makefile :
+        1) definie Function_Name 
+                commands
+            endef
+
+            how to call the function and pass arguement to it 
+                $(call function_name , arg1 , arg2 )
+
+                $@ : variable of target  
+
+        2) predefinied function in Makefile: 
+            $(subst .c,.cpp , main.c test.c lcd.c)
+            $(patsubst %.c , %.o , x.c.c bar.c)
+            $(sort zoo bar lose)
+            $(word 3, foo bar baz)
+            $(wordlist 2, 3, foo bar baz)
+            $(firstword foo bar)
+            $(lastword foo bar)
+
+    9)loops :
+        A-bash style : 
+            for i in $(LIST); do \
+                echo $$i; \
+            done 
+
+        B- foreach function 
+            $(foreach var, list,text)
+
+    10) if statement in makefile : 
+    
+        ifeq '$(file)'  'test.c'
+        cond1 : 
+            $echo "true"
+        endif
+          
+        cond2 : 
+        ifeq '$(file)'  'test.c'
+            $echo "true"
+        endif 
+
+        bar = true 
+        foo = bar
+          
+    11) include , phoney :
+
+        .PHONY : clean
+        clean: 
+            @echo "add clean file as you want , i will not conflict , i will execute this rule"
+
+        include makeconfig
+            --> in makeconfig file you can decalre how many variables or commands you want 
+
+
+
+
+    
