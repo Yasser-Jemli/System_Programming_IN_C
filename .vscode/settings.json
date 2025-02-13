@@ -3,6 +3,11 @@
     "files.associations": {
         "notification.h": "c",
         "stdio.h": "c",
-        "notify.h": "c"
+        "notify.h": "c",
+        "types.h": "c",
+        "unistd.h": "c",
+        "getopt_posix.h": "c",
+        "typeinfo": "c",
+        "socket.h": "c"
     }
 }

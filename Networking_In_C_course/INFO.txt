@@ -1,0 +1,4 @@
+
+
+1 - What's a socket ? 
+2 - Creating a Simple server 

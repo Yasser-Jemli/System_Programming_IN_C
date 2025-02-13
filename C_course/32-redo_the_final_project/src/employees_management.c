@@ -24,6 +24,4 @@ int add_new_employee_to_database_file(struct database_header *db_header , struct
     printf("Employees required hours is : %d \n" , db_employees->required_hours);
     printf("Employees job title is : %s \n" , db_employees->job_title);
     return STATUS_SUCCESS ;
-
-
 }
